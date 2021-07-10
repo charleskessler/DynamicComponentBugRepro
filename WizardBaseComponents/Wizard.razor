@@ -1,0 +1,13 @@
+﻿@if (Properties is not null && Properties.ScreenTypes?.Count >= 1)
+{    
+    //show the first screen for demo
+    <DynamicComponent Type="Properties.ScreenTypes[0]"></DynamicComponent>
+}
+
+
+@code {
+
+    [Parameter]
+    public WizardProperties Properties { get; set; }
+
+}

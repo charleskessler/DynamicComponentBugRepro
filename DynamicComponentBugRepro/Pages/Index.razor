@@ -1,0 +1,25 @@
+﻿@page "/"
+
+<MudButton OnClick="ShowDialog">Show Dialog</MudButton>
+
+@using WizardLoader
+@using WizardBaseComponents
+@inject IDialogService DialogService
+@code {
+
+    private async Task ShowDialog()
+    {
+        var loader = new Loader(@"..\WizardAssemblies");
+        var wizard = loader.LoadInstance("TestWizard");
+
+        if (wizard is not null)
+        {
+            var parameters = new DialogParameters();
+            parameters.Add("Properties", wizard.Properties);
+
+            var dialog = DialogService.Show<WizardDialog>("Test Dialog", parameters);
+            var result = await dialog.Result;
+        }
+    }
+}
+

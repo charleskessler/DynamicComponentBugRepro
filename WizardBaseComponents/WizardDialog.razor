@@ -1,0 +1,13 @@
+﻿<MudDialog>
+    <DialogContent>
+        <Wizard Properties="@Properties"></Wizard>
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter] 
+    MudDialogInstance MudDialog { get; set; }
+
+    [Parameter]
+    public WizardProperties Properties { get; set; }
+}
